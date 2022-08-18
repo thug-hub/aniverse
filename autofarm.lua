@@ -16,10 +16,10 @@ game:GetService("RunService").Stepped:Connect(function()
             if v:IsA("BasePart") and v.CanCollide == true then
                     v.CanCollide = false
                     game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
-                end;
-            end;
-        end;
-end);
+                end
+            end
+        end
+end)
 game.Players.LocalPlayer.DevCameraOcclusionMode = "Invisicam"
 
 Section:NewToggle("Auto Attack", "ToggleInfo", function(state)
@@ -40,7 +40,7 @@ end)
 
 
 getgenv().Distance = 6
-Section:NewSlider("Distance", "SliderInfo", 20, 2, function(s) -- 500 (MaxValue) | 0 (MinValue)
+Section:NewSlider("Distance", "SliderInfo", 20, -20, function(s) -- 500 (MaxValue) | 0 (MinValue)
     getgenv().Distance = s
 end)
 
@@ -53,17 +53,19 @@ if state2 then
 end
 
     while getgenv().Autofarm and wait() do
+        if getgenv().Autofarm == true then
 
     pcall(function()
     	for _,v in pairs(game:GetService("Workspace"):GetChildren()) do
     		if v:FindFirstChild("Enemy") and v:FindFirstChild("HumanoidRootPart") then
         		if v.Humanoid.Health > 0 then
-        			Plr.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame - Vector3.new(0, (getgenv().Distance), 0)
+        			Plr.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame - Vector3.new(0, 0, (getgenv().Distance))
         			Plr.Character.HumanoidRootPart.CFrame = CFrame.new(Plr.Character.HumanoidRootPart.Position, v.HumanoidRootPart.Position)
         		end
         	end
         end
     end)
+    end
 
 end
 end)
@@ -106,9 +108,9 @@ end
 
 while getgenv().Skip do
 wait(1)
-if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.TalkBox.TalkGui.Visible == true then
+--if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.TalkBox.TalkGui.Visible == true then
     game:GetService("ReplicatedStorage").GameStorage.Remotes.TalkEvent:FireServer("Skip")
-end
+--end
 end
 end)
 
@@ -121,9 +123,9 @@ end
 
 while getgenv().replay do
 wait()
-if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.SClearBox.ClearFrame.ReplayB.Visible == true then
+--if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.SClearBox.ClearFrame.ReplayB.Visible == true then
     game:GetService("ReplicatedStorage").GameStorage.Remotes.StageEvents:FireServer("Replay")
-end
+--end
 end
 end)
 
@@ -137,8 +139,8 @@ end
 
 while getgenv().nextstage do
 wait()
-if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.SClearBox.ClearFrame.NextB.Visible == true then
+--if game:GetService("Players").LocalPlayer.PlayerGui.MainGui.SClearBox.ClearFrame.NextB.Visible == true then
     game:GetService("ReplicatedStorage").GameStorage.Remotes.StageEvents:FireServer("Next")
-end
+--end
 end
 end)
