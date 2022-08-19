@@ -22,6 +22,27 @@ game:GetService("RunService").Stepped:Connect(function()
 end)
 game.Players.LocalPlayer.DevCameraOcclusionMode = "Invisicam"
 
+
+Section:NewToggle("Auto Switch", "ToggleInfo", function(state0)
+    if state0 then
+getgenv().autoswitch = true
+    else
+getgenv().autoswitch = false
+    end
+    
+    while getgenv().autoswitch == true do
+        wait(1)
+    
+    
+    for m,h in pairs(game:GetService("Players").LocalPlayer.Data.Units:GetDescendants()) do
+        if h.Parent.Name == "Rimuru" and h.Name == "Slot" and tonumber(h.Value) == tonumber(game:GetService("Players").LocalPlayer.Data.UTeam.EUnit.Value) then
+            game:GetService("ReplicatedStorage").GameStorage.Remotes.SwapEvent:FireServer()
+        end
+    end
+    
+    end
+end)
+
 Section:NewToggle("Auto Attack", "ToggleInfo", function(state)
     if state then
 getgenv().autoattack = true
@@ -39,7 +60,7 @@ getgenv().autoattack = false
 end)
 
 
-getgenv().Distance = 6
+getgenv().Distance = 7
 Section:NewSlider("Distance", "SliderInfo", 20, -20, function(s) -- 500 (MaxValue) | 0 (MinValue)
     getgenv().Distance = s
 end)
@@ -79,16 +100,18 @@ if state3 then
 end
 
 local name = nil
-for m,h in pairs(game:GetService("Players").LocalPlayer.Data.Units:GetDescendants()) do
-    if h.Name == "Slot" and h.Value == 1 then
-        name = h.Parent.Name
-    end
-end
-
-print(name)
-local aa = tostring(game:GetService("Players").LocalPlayer.Backpack.UnitLScript.UInfo.Value)
 
 while getgenv().Skill do
+    
+    for m,h in pairs(game:GetService("Players").LocalPlayer.Data.Units:GetDescendants()) do
+    if h.Name == "Slot" and tonumber(h.Value) == tonumber(game:GetService("Players").LocalPlayer.Data.UTeam.EUnit.Value) then
+        name = h.Parent.Name
+    end
+    end
+    
+    local aa = tostring(game:GetService("Players").LocalPlayer.Backpack.UnitLScript.UInfo.Value)
+    
+    
     wait(1)
     game:GetService("ReplicatedStorage").GameInfo.UnitInfo[name][aa].Remotes.Skill1:FireServer()
     wait(0.15)
