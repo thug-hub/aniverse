@@ -60,7 +60,7 @@ getgenv().autoattack = false
 end)
 
 
-getgenv().Distance = 7
+getgenv().Distance = 8
 Section:NewSlider("Distance", "SliderInfo", 20, -20, function(s) -- 500 (MaxValue) | 0 (MinValue)
     getgenv().Distance = s
 end)
