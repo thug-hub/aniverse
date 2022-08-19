@@ -59,7 +59,7 @@ getgenv().autoattack = false
 end)
 
 
-getgenv().Distance = 8
+getgenv().Distance = 7
 Section:NewSlider("Distance", "SliderInfo", 20, -20, function(s) -- 500 (MaxValue) | 0 (MinValue)
     getgenv().Distance = s
 end)
@@ -79,8 +79,15 @@ end
     	for _,v in pairs(game:GetService("Workspace"):GetChildren()) do
     		if v:FindFirstChild("Enemy") and v:FindFirstChild("HumanoidRootPart") then
         		if v.Humanoid.Health > 0 then
-        			Plr.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame - Vector3.new(0, 0, (getgenv().Distance))
-        			Plr.Character.HumanoidRootPart.CFrame = CFrame.new(Plr.Character.HumanoidRootPart.Position, v.HumanoidRootPart.Position)
+        		    if v.Name == "Sniper Marine" then
+        		        repeat wait()
+        			    Plr.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame - Vector3.new(0, 0, (getgenv().Distance))
+        			    Plr.Character.HumanoidRootPart.CFrame = CFrame.new(Plr.Character.HumanoidRootPart.Position, v.HumanoidRootPart.Position)
+        		        until v.Humanoid.Health <= 0
+        		    else
+        		        Plr.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame - Vector3.new(0, 0, (getgenv().Distance))
+        			    Plr.Character.HumanoidRootPart.CFrame = CFrame.new(Plr.Character.HumanoidRootPart.Position, v.HumanoidRootPart.Position)
+        		    end
         		end
         	end
         end
