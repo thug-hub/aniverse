@@ -31,8 +31,7 @@ getgenv().autoswitch = false
     end
     
     while getgenv().autoswitch == true do
-        wait(1)
-    
+        wait(0.5)
     
     for m,h in pairs(game:GetService("Players").LocalPlayer.Data.Units:GetDescendants()) do
         if h.Parent.Name == "Rimuru" and h.Name == "Slot" and tonumber(h.Value) == tonumber(game:GetService("Players").LocalPlayer.Data.UTeam.EUnit.Value) then
