@@ -121,7 +121,9 @@ end
 
 end)
 
-Section:NewToggle("Auto Skip Dialogue", "ToggleInfo", function(state4)
+local Section2 = Tab:NewSection("Auto Stage Options")
+
+Section2:NewToggle("Auto Skip Dialogue", "ToggleInfo", function(state4)
 if state4 then
     getgenv().Skip = true
     else
@@ -136,7 +138,7 @@ wait(1)
 end
 end)
 
-Section:NewToggle("Auto Replay Stage", "ToggleInfo", function(state5)
+Section2:NewToggle("Auto Replay Stage", "ToggleInfo", function(state5)
 if state5 then
     getgenv().replay = true
     else
@@ -152,7 +154,7 @@ end
 end)
 
 
-Section:NewToggle("Auto Next Stage", "ToggleInfo", function(state6)
+Section2:NewToggle("Auto Next Stage", "ToggleInfo", function(state6)
 if state6 then
     getgenv().nextstage = true
     else
