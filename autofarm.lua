@@ -105,21 +105,21 @@ if state3 then
     getgenv().Skill1 = false
 end
 
-local name = nil
+local name1 = nil
 
 while getgenv().Skill1 do
     
     for m,h in pairs(game:GetService("Players").LocalPlayer.Data.Units:GetDescendants()) do
     if h.Name == "Slot" and tonumber(h.Value) == tonumber(game:GetService("Players").LocalPlayer.Data.UTeam.EUnit.Value) then
-        name = h.Parent.Name
+        name1 = h.Parent.Name
     end
     end
     
-    local aa = tostring(game:GetService("Players").LocalPlayer.Backpack.UnitLScript.UInfo.Value)
+    local aa1 = tostring(game:GetService("Players").LocalPlayer.Backpack.UnitLScript.UInfo.Value)
     
     
     wait(1)
-    game:GetService("ReplicatedStorage").GameInfo.UnitInfo[name][aa].Remotes.Skill1:FireServer()
+    game:GetService("ReplicatedStorage").GameInfo.UnitInfo[name1][aa1].Remotes.Skill1:FireServer()
 end
 
 end)
@@ -131,21 +131,21 @@ if state7 then
     getgenv().Skill2 = false
 end
 
-local name = nil
+local name2 = nil
 
 while getgenv().Skill2 do
     
-    for m,h in pairs(game:GetService("Players").LocalPlayer.Data.Units:GetDescendants()) do
-    if h.Name == "Slot" and tonumber(h.Value) == tonumber(game:GetService("Players").LocalPlayer.Data.UTeam.EUnit.Value) then
-        name = h.Parent.Name
+    for f,g in pairs(game:GetService("Players").LocalPlayer.Data.Units:GetDescendants()) do
+    if g.Name == "Slot" and tonumber(g.Value) == tonumber(game:GetService("Players").LocalPlayer.Data.UTeam.EUnit.Value) then
+        name2 = g.Parent.Name
     end
     end
     
-    local aa = tostring(game:GetService("Players").LocalPlayer.Backpack.UnitLScript.UInfo.Value)
+    local aa2 = tostring(game:GetService("Players").LocalPlayer.Backpack.UnitLScript.UInfo.Value)
     
     
     wait(1)
-    game:GetService("ReplicatedStorage").GameInfo.UnitInfo[name][aa].Remotes.Skill2:FireServer()
+    game:GetService("ReplicatedStorage").GameInfo.UnitInfo[name2][aa2].Remotes.Skill2:FireServer()
 end
 
 end)
@@ -157,21 +157,21 @@ if state8 then
     getgenv().Skill3 = false
 end
 
-local name = nil
+local name3 = nil
 
 while getgenv().Skill3 do
     
-    for m,h in pairs(game:GetService("Players").LocalPlayer.Data.Units:GetDescendants()) do
-    if h.Name == "Slot" and tonumber(h.Value) == tonumber(game:GetService("Players").LocalPlayer.Data.UTeam.EUnit.Value) then
-        name = h.Parent.Name
+    for j,k in pairs(game:GetService("Players").LocalPlayer.Data.Units:GetDescendants()) do
+    if k.Name == "Slot" and tonumber(k.Value) == tonumber(game:GetService("Players").LocalPlayer.Data.UTeam.EUnit.Value) then
+        name3 = k.Parent.Name
     end
     end
     
-    local aa = tostring(game:GetService("Players").LocalPlayer.Backpack.UnitLScript.UInfo.Value)
+    local aa3 = tostring(game:GetService("Players").LocalPlayer.Backpack.UnitLScript.UInfo.Value)
     
     
     wait(1)
-    game:GetService("ReplicatedStorage").GameInfo.UnitInfo[name][aa].Remotes.Skill3:FireServer()
+    game:GetService("ReplicatedStorage").GameInfo.UnitInfo[name3][aa3].Remotes.Skill3:FireServer()
 end
 
 end)
