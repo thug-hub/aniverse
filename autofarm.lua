@@ -98,16 +98,16 @@ end
 end)
 
 
-Section:NewToggle("Auto Skill", "ToggleInfo", function(state3)
+Section:NewToggle("Auto Skill 1", "ToggleInfo", function(state3)
 if state3 then
-    getgenv().Skill = true
+    getgenv().Skill1 = true
     else
-    getgenv().Skill = false
+    getgenv().Skill1 = false
 end
 
 local name = nil
 
-while getgenv().Skill do
+while getgenv().Skill1 do
     
     for m,h in pairs(game:GetService("Players").LocalPlayer.Data.Units:GetDescendants()) do
     if h.Name == "Slot" and tonumber(h.Value) == tonumber(game:GetService("Players").LocalPlayer.Data.UTeam.EUnit.Value) then
@@ -120,15 +120,66 @@ while getgenv().Skill do
     
     wait(1)
     game:GetService("ReplicatedStorage").GameInfo.UnitInfo[name][aa].Remotes.Skill1:FireServer()
-    wait(0.15)
+end
+
+end)
+
+Section:NewToggle("Auto Skill 2", "ToggleInfo", function(state7)
+if state7 then
+    getgenv().Skill2 = true
+    else
+    getgenv().Skill2 = false
+end
+
+local name = nil
+
+while getgenv().Skill2 do
+    
+    for m,h in pairs(game:GetService("Players").LocalPlayer.Data.Units:GetDescendants()) do
+    if h.Name == "Slot" and tonumber(h.Value) == tonumber(game:GetService("Players").LocalPlayer.Data.UTeam.EUnit.Value) then
+        name = h.Parent.Name
+    end
+    end
+    
+    local aa = tostring(game:GetService("Players").LocalPlayer.Backpack.UnitLScript.UInfo.Value)
+    
+    
+    wait(1)
     game:GetService("ReplicatedStorage").GameInfo.UnitInfo[name][aa].Remotes.Skill2:FireServer()
-    wait(0.15)
+end
+
+end)
+
+Section:NewToggle("Auto Skill 3", "ToggleInfo", function(state8)
+if state8 then
+    getgenv().Skill3 = true
+    else
+    getgenv().Skill3 = false
+end
+
+local name = nil
+
+while getgenv().Skill3 do
+    
+    for m,h in pairs(game:GetService("Players").LocalPlayer.Data.Units:GetDescendants()) do
+    if h.Name == "Slot" and tonumber(h.Value) == tonumber(game:GetService("Players").LocalPlayer.Data.UTeam.EUnit.Value) then
+        name = h.Parent.Name
+    end
+    end
+    
+    local aa = tostring(game:GetService("Players").LocalPlayer.Backpack.UnitLScript.UInfo.Value)
+    
+    
+    wait(1)
     game:GetService("ReplicatedStorage").GameInfo.UnitInfo[name][aa].Remotes.Skill3:FireServer()
 end
 
 end)
 
-local Section2 = Tab:NewSection("Auto Stage Options")
+
+local Tab2 = Window:NewTab("Stage Settings")
+
+local Section2 = Tab2:NewSection("Auto Stage Options")
 
 Section2:NewToggle("Auto Skip Dialogue", "ToggleInfo", function(state4)
 if state4 then
