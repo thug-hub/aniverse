@@ -10,6 +10,7 @@ local me = game.Players.LocalPlayer
 
 local Plr = game:GetService("Players").LocalPlayer
 
+--[[
 game:GetService("RunService").Stepped:Connect(function()
     if getgenv().Autofarm then
         for i,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
@@ -20,6 +21,10 @@ game:GetService("RunService").Stepped:Connect(function()
             end
         end
 end)
+--]]
+setfflag("HumanoidParallelRemoveNoPhysics", "False")
+setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
+
 game.Players.LocalPlayer.DevCameraOcclusionMode = "Invisicam"
 
 
@@ -72,26 +77,36 @@ if state2 then
     getgenv().Autofarm = false
 end
 
-    while getgenv().Autofarm and wait() do
+    game:GetService('RunService').Stepped:connect(function()
+        if getgenv().Autofarm then
+            Plr.Character:WaitForChild("Humanoid"):ChangeState(11)
+        end
+    end)
+
+    while getgenv().Autofarm do
+        wait()
         if getgenv().Autofarm == true then
 
-    pcall(function()
+    --pcall(function()
     	for _,v in pairs(game:GetService("Workspace"):GetChildren()) do
     		if v:FindFirstChild("Enemy") and v:FindFirstChild("HumanoidRootPart") then
         		if v.Humanoid.Health > 0 then
         		    if v.Name == "Sniper Marine" then
         		        repeat wait()
-        			    Plr.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame - Vector3.new(0, 0, (getgenv().Distance))
-        			    Plr.Character.HumanoidRootPart.CFrame = CFrame.new(Plr.Character.HumanoidRootPart.Position, v.HumanoidRootPart.Position)
+        			    --Plr.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame - Vector3.new(0, 0, (getgenv().Distance))
+        			    --Plr.Character.HumanoidRootPart.CFrame = CFrame.new(Plr.Character.HumanoidRootPart.Position, v.HumanoidRootPart.Position)
+        			    
+        			    Plr.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(v:FindFirstChild("HumanoidRootPart").Position + Vector3.new(0,tonumber(getgenv().Distance),0), v:FindFirstChild("HumanoidRootPart").Position)
         		        until v.Humanoid.Health <= 0
         		    else
-        		        Plr.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame - Vector3.new(0, 0, (getgenv().Distance))
-        			    Plr.Character.HumanoidRootPart.CFrame = CFrame.new(Plr.Character.HumanoidRootPart.Position, v.HumanoidRootPart.Position)
+        		        --Plr.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame - Vector3.new(0, 0, (getgenv().Distance))
+        			    --Plr.Character.HumanoidRootPart.CFrame = CFrame.new(Plr.Character.HumanoidRootPart.Position, v.HumanoidRootPart.Position)
+        			    Plr.Character:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(v:FindFirstChild("HumanoidRootPart").Position + Vector3.new(0,tonumber(getgenv().Distance),0), v:FindFirstChild("HumanoidRootPart").Position)
         		    end
         		end
         	end
         end
-    end)
+    --end)
     end
 
 end
